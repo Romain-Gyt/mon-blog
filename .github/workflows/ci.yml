@@ -2,28 +2,28 @@ name: CI pour mon blog
 
 on:
   push:
-    branches : [ main ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
   build-and-test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-    -name: checkout code
-      uses: action/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    -name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    -name: Install les dependances
-      run: npm install
+      - name: Install les dépendances
+        run: npm install
 
-    -name: Lancer les tests
-      run: npm test
+      - name: Lancer les tests
+        run: npm test
 
-    -name: lancer linter
-      run: npm run lint
+      - name: Lancer linter
+        run: npm run lint
